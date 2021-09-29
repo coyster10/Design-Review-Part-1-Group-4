@@ -5,11 +5,11 @@ SELECT [Customer FirstName]+ [Customer LastName] AS CustomerName, [Customer City
 --3. Create a list of when an agent received their first review (180 days after being hired)
 SELECT [Agent FirstName]+[Agent LastName] AS AgentName, DateHired + 180 AS FirstReview FROM Agents$;
 --4. Create a report of the net price per contract that lists our fee (contract price * our fee (12%)) and the net amount per contract (contract price - (contract price * our fee (12%)) 
-SELECT EngagementNumber, ContractPrice *1.12 AS Fee, (ContractPrice-(ContractPrice*1.12)) AS NetAmount FROM Engagements$
+SELECT EngagementNumber, ContractPrice *0.12 AS Fee, (ContractPrice-(ContractPrice*0.12)) AS NetAmount FROM Engagements$;
 --5. Create a report of all engagements that last more than 3 days
-
+SELECT EngagementNumber,StartDate,EndDate FROM Engagements$ WHERE EndDate-StartDate>3;
 --6. Create a report of all October engagments that occured in 2017
-
+SELECT EngagementNumber, StartDate FROM Engagements$ WHERE StartDate > '2017-09-30' AND StartDate < '2017-11-01' ORDER BY StartDate ASC;
 --7. Create a report of all October engagements that occured between noon and five pm
 
 --8. Create a list of all customers and the groups they have booked
