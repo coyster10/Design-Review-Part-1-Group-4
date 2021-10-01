@@ -1,0 +1,34 @@
+- Copying to [dbo].[Customers] (Error)
+	Messages
+	* Error 0xc0209029: Data Flow Task 1: SSIS Error Code DTS_E_INDUCEDTRANSFORMFAILUREONERROR.  The "Destination 4 - Group_Members.Inputs[Destination Input]" failed because error code 0xC020907B occurred, and the error row disposition on "Destination 4 - Group_Members.Inputs[Destination Input]" specifies failure on error. An error occurred on the specified object of the specified component.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0209029: Data Flow Task 1: SSIS Error Code DTS_E_INDUCEDTRANSFORMFAILUREONERROR.  The "Destination 3 - Group_By_Style.Inputs[Destination Input]" failed because error code 0xC020907B occurred, and the error row disposition on "Destination 3 - Group_By_Style.Inputs[Destination Input]" specifies failure on error. An error occurred on the specified object of the specified component.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Information 0x402090df: Data Flow Task 1: The final commit for the data insertion in "Destination - Agents" has started.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0047022: Data Flow Task 1: SSIS Error Code DTS_E_PROCESSINPUTFAILED.  The ProcessInput method on component "Destination 3 - Group_By_Style" (296) failed with error code 0xC0209029 while processing input "Destination Input" (309). The identified component returned an error from the ProcessInput method. The error is specific to the component, but the error is fatal and will cause the Data Flow task to stop running.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0047022: Data Flow Task 1: SSIS Error Code DTS_E_PROCESSINPUTFAILED.  The ProcessInput method on component "Destination 4 - Group_Members" (353) failed with error code 0xC0209029 while processing input "Destination Input" (366). The identified component returned an error from the ProcessInput method. The error is specific to the component, but the error is fatal and will cause the Data Flow task to stop running.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Information 0x402090e0: Data Flow Task 1: The final commit for the data insertion  in "Destination - Agents" has ended.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0209017: Data Flow Task 1: Setting the end of rowset for the buffer failed with error code 0xC0047020.
+	 (SQL Server Import and Export Wizard)
+	
+	* Information 0x402090df: Data Flow Task 1: The final commit for the data insertion in "Destination 1 - Customers" has started.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0047038: Data Flow Task 1: SSIS Error Code DTS_E_PRIMEOUTPUTFAILED.  The PrimeOutput method on Source 2 - Engagements$ returned error code 0xC0209017.  The component returned a failure code when the pipeline engine called PrimeOutput(). The meaning of the failure code is defined by the component, but the error is fatal and the pipeline stopped executing.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Information 0x402090e0: Data Flow Task 1: The final commit for the data insertion  in "Destination 1 - Customers" has ended.
+	 (SQL Server Import and Export Wizard)
+	
+
+

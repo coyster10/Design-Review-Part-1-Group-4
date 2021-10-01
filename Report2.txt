@@ -1,0 +1,21 @@
+- Copying to [dbo].[Agents] (Error)
+	Messages
+	* Error 0xc0202009: Data Flow Task 1: SSIS Error Code DTS_E_OLEDBERROR.  An OLE DB error has occurred. Error code: 0x80004005.
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The statement has been terminated.".
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Group_Mem__Group__403A8C7D". The conflict occurred in database "Entertainment", table "dbo.Groups", column 'GroupID'.".
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0209029: Data Flow Task 1: SSIS Error Code DTS_E_INDUCEDTRANSFORMFAILUREONERROR.  The "Destination 4 - Group_Members.Inputs[Destination Input]" failed because error code 0xC020907B occurred, and the error row disposition on "Destination 4 - Group_Members.Inputs[Destination Input]" specifies failure on error. An error occurred on the specified object of the specified component.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0047022: Data Flow Task 1: SSIS Error Code DTS_E_PROCESSINPUTFAILED.  The ProcessInput method on component "Destination 4 - Group_Members" (353) failed with error code 0xC0209029 while processing input "Destination Input" (366). The identified component returned an error from the ProcessInput method. The error is specific to the component, but the error is fatal and will cause the Data Flow task to stop running.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0209017: Data Flow Task 1: Setting the end of rowset for the buffer failed with error code 0xC0047020.
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0047038: Data Flow Task 1: SSIS Error Code DTS_E_PRIMEOUTPUTFAILED.  The PrimeOutput method on Source 2 - Engagements$ returned error code 0xC0209017.  The component returned a failure code when the pipeline engine called PrimeOutput(). The meaning of the failure code is defined by the component, but the error is fatal and the pipeline stopped executing.  There may be error messages posted before this with more information about the failure.
+	 (SQL Server Import and Export Wizard)
+	
+
+

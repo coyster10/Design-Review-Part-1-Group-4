@@ -1,0 +1,14 @@
+- Copying to [dbo].[Agents] (Error)
+	Messages
+	* Error 0xc0202009: Data Flow Task 1: SSIS Error Code DTS_E_OLEDBERROR.  An OLE DB error has occurred. Error code: 0x80004005.
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The statement has been terminated.".
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Group_By___Style__4316F928". The conflict occurred in database "Entertainment", table "dbo.MusicalStyle", column 'StyleNameID'.".
+	 (SQL Server Import and Export Wizard)
+	
+	* Error 0xc0202009: Data Flow Task 1: SSIS Error Code DTS_E_OLEDBERROR.  An OLE DB error has occurred. Error code: 0x80004005.
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The statement has been terminated.".
+	An OLE DB record is available.  Source: "Microsoft SQL Server Native Client 11.0"  Hresult: 0x80004005  Description: "The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Group_Mem__Group__403A8C7D". The conflict occurred in database "Entertainment", table "dbo.Groups", column 'GroupID'.".
+	 (SQL Server Import and Export Wizard)
+	
+
+
