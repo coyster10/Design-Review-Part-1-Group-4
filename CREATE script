@@ -1,0 +1,95 @@
+CREATE DATABASE [Entertainment]
+
+GO
+
+USE Entertainment
+
+GO
+
+CREATE TABLE Agents(
+	AgentID NVARCHAR(8) NOT NULL PRIMARY KEY,
+	AgentFirstName NVARCHAR(50) NOT NULL,
+	AgentLastName NVARCHAR(50) NOT NULL,
+	AgentStreetAddress NVARCHAR(50) NOT NULL,
+	AgentCity NVARCHAR(50) NOT NULL,
+	AgentState NVARCHAR (2) NOT NULL,
+	AgentZipCode DECIMAL(10) NOT NULL,
+	AgentPhoneNumber NVARCHAR (10) NOT NULL,
+	DateHired DATETIME ,
+	Salary MONEY NOT NULL,
+	CommissionRate DECIMAL (7,2) NOT NULL);
+
+
+CREATE TABLE Performers(
+	MemberID NVARCHAR(8) NOT NULL PRIMARY KEY,
+	MemberFirstName NVARCHAR(50) NOT NULL, 
+	MemberLastName NVARCHAR(50) NOT NULL,
+	MemberPhoneNumber NVARCHAR(10) NOT NULL,
+	MemberGender NVARCHAR(1) NOT NULL );
+
+
+CREATE TABLE Customers(
+	CustomerID NVARCHAR(8) NOT NULL PRIMARY KEY,
+	CustomerFirstName NVARCHAR(50) NOT NULL,
+	CustomerLastName NVARCHAR(50) NOT NULL,
+	CustomerStreetAddress NVARCHAR(50) NOT NULL,
+	CustomerCity NVARCHAR(50) NOT NULL,
+	CustomerState NVARCHAR(2) NOT NULL,
+	CustomerZipCode DECIMAL(10) NOT NULL,
+	CustomerPhoneNumber NVARCHAR(10) NOT NULL );
+
+
+CREATE TABLE Groups(
+	GroupID NVARCHAR(8) NOT NULL PRIMARY KEY,
+	StageName NVARCHAR(50) NOT NULL,
+	SSN NVARCHAR(11) NOT NULL,
+	GroupStreetAddress NVARCHAR (50) NOT NULL,
+	GroupCity NVARCHAR(50) NOT NULL,
+	GroupState NVARCHAR(2) NOT NULL,
+	GroupZipCode DECIMAL(10) NOT NULL,
+	GroupPhoneNumber NVARCHAR(10) NOT NULL,
+	GroupPage NVARCHAR(50) NULL,
+	GroupEmail NVARCHAR(50) NULL,
+	DateEntered DATETIME  NOT NULL );
+
+CREATE TABLE MusicalStyle(
+	StyleNameID NVARCHAR(8) NOT NULL PRIMARY KEY,
+	StyleName NVARCHAR(50) NOT NULL );
+	
+CREATE TABLE Group_Members(
+	GroupID NVARCHAR(8) 
+	REFERENCES Groups(GroupID),
+	MemberID NVARCHAR(8)
+	REFERENCES Performers(MemberID),
+	Status DECIMAL(1) NOT NULL );
+
+CREATE TABLE Group_By_Style(
+	StyleNameID NVARCHAR(8) 
+	REFERENCES MusicalStyle(StyleNameID),
+	GroupID NVARCHAR(8) 
+	REFERENCES Groups(GroupID),
+	StyleStrength DECIMAL(1) NOT NULL );
+
+CREATE TABLE MusicalPreferences(
+	StyleNameID NVARCHAR(8) 
+	REFERENCES MusicalStyle(StyleNameID),
+	CustomerID NVARCHAR(8) 
+	REFERENCES Customers(CustomerID),
+	PreferenceRating DECIMAL(1) NOT NULL );
+
+
+CREATE TABLE Engagements(
+	EngagementNumber DECIMAL(8) NOT NULL PRIMARY KEY,
+	StartDate DATETIME  NOT NULL,
+	EndDate DATETIME  NOT NULL,
+	StartTime DATETIME  NOT NULL,
+	StopTime DATETIME  NOT NULL,
+	ContractPrice MONEY  NOT NULL,
+	CustomerID NVARCHAR (8) NOT NULL
+	REFERENCES Customers(CustomerID),
+	AgentID NVARCHAR (8) 
+	REFERENCES Agents(AgentID),
+	GroupID NVARCHAR (8) 
+	REFERENCES Groups(GroupID));
+
+
