@@ -17,7 +17,7 @@ CREATE TABLE Agents(
 	AgentState NVARCHAR (2) NOT NULL,
 	AgentZipCode DECIMAL(10) NOT NULL,
 	AgentPhoneNumber NVARCHAR (10) NOT NULL,
-	DateHired DATETIME ,
+	DateHired DATE ,
 	Salary MONEY NOT NULL,
 	CommissionRate DECIMAL (7,2) NOT NULL);
 
@@ -27,7 +27,8 @@ CREATE TABLE Performers(
 	MemberFirstName NVARCHAR(50) NOT NULL, 
 	MemberLastName NVARCHAR(50) NOT NULL,
 	MemberPhoneNumber NVARCHAR(10) NOT NULL,
-	MemberGender NVARCHAR(1) NOT NULL );
+	MemberGender NVARCHAR(1)
+	CHECK (MemberGender = 'M' OR MemberGender = 'F')NOT NULL );
 
 
 CREATE TABLE Customers(
@@ -61,29 +62,33 @@ CREATE TABLE Musical_Style(
 CREATE TABLE Group_Members(
 	GroupID NVARCHAR(8) NULL ,
 	MemberID NVARCHAR(8) NULL,
-	Status DECIMAL(1) NOT NULL );
+	Status DECIMAL(1) 
+	CHECK (Status = 1 OR Status = 2 ) NOT NULL );
 
 CREATE TABLE Group_By_Style(
 	StyleNameID NVARCHAR(8) NULL ,
 	GroupID NVARCHAR(8) NULL ,
-	StyleStrength DECIMAL(1) NOT NULL );
+	StyleStrength DECIMAL(1)
+	CHECK (StyleStrength = 1 OR StyleStrength  <= 3 ) NOT NULL );
 
 CREATE TABLE Musical_Preferences(
 	StyleNameID NVARCHAR(8) NULL ,
 	CustomerID NVARCHAR(8) NULL ,
-	PreferenceRating DECIMAL(1) NOT NULL );
+	PreferenceRating DECIMAL(1)
+	 CHECK (PreferenceRating = 1 OR PreferenceRating <= 3 ) NOT NULL );
 
 
 CREATE TABLE Engagements(
 	EngagementNumber DECIMAL(8) NOT NULL PRIMARY KEY,
-	StartDate DATETIME  NOT NULL,
-	EndDate DATETIME  NOT NULL,
-	StartTime DATETIME  NOT NULL,
-	StopTime DATETIME  NOT NULL,
+	StartDate DATE  NOT NULL,
+	EndDate DATE NOT NULL,
+	StartTime TIME  NOT NULL,
+	StopTime TIME NOT NULL,
 	ContractPrice MONEY  NOT NULL,
 	CustomerID NVARCHAR (8) NULL,
 	AgentID NVARCHAR (8) NULL,
-	GroupID NVARCHAR (8) NULL
+	GroupID NVARCHAR (8) NULL,
+	
 	);
 
 
@@ -111,3 +116,4 @@ ALTER TABLE [Musical_Preferences] ADD CONSTRAINT FK__Musical_P__Custo__33D4B598 
 GO
 ALTER TABLE [Musical_Preferences] ADD CONSTRAINT FK__Musical_P__Style__32E0915F FOREIGN KEY(StyleNameID) REFERENCES Musical_Style (StyleNameID) ON DELETE CASCADE ON UPDATE CASCADE
 GO
+
