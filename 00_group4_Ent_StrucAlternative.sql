@@ -8,6 +8,7 @@ USE Entertainment
 
 GO
 
+
 CREATE TABLE Agents(
 	AgentID VARCHAR(8) NOT NULL PRIMARY KEY,
 	AgentFirstName VARCHAR(50) NOT NULL,
@@ -15,20 +16,22 @@ CREATE TABLE Agents(
 	AgentStreetAddress VARCHAR(50) NOT NULL,
 	AgentCity VARCHAR(50) NOT NULL,
 	AgentState VARCHAR (2) NOT NULL,
-	AgentZipCode DECIMAL(10) NOT NULL,
-	AgentPhoneNumber VARCHAR (10) NOT NULL,
-	DateHired DATE ,
+	AgentZipCode VARCHAR(10) NOT NULL,
+	AgentPhoneNumber VARCHAR (10) NOT NULL
+	CHECK(LEN(AgentPhoneNumber) = 8 ),
+	DateHired DATE  ,
 	Salary MONEY NOT NULL
 	CHECK (Salary !< 0),
 	CommissionRate DECIMAL (5,2)
 	CHECK (CommissionRate !> 100 OR CommissionRate !< 0)NOT NULL);
-
+	
 
 CREATE TABLE Performers(
 	MemberID VARCHAR(8) NOT NULL PRIMARY KEY,
 	MemberFirstName VARCHAR(50) NOT NULL, 
 	MemberLastName VARCHAR(50) NOT NULL,
-	MemberPhoneNumber VARCHAR(10) NOT NULL,
+	MemberPhoneNumber VARCHAR(10) NOT NULL
+	CHECK(LEN(MemberPhoneNumber) = 8 ),
 	MemberGender VARCHAR(1)
 	CHECK (MemberGender = 'M' OR MemberGender = 'F')NOT NULL );
 
@@ -40,7 +43,7 @@ CREATE TABLE Customers(
 	CustomerStreetAddress VARCHAR(50) NOT NULL,
 	CustomerCity VARCHAR(50) NOT NULL,
 	CustomerState VARCHAR(2) NOT NULL,
-	CustomerZipCode DECIMAL(10) NOT NULL,
+	CustomerZipCode VARCHAR(10) NOT NULL,
 	CustomerPhoneNumber VARCHAR(10) NOT NULL );
 
 
@@ -51,11 +54,12 @@ CREATE TABLE Groups(
 	GroupStreetAddress VARCHAR (50) NOT NULL,
 	GroupCity VARCHAR(50) NOT NULL,
 	GroupState VARCHAR(2) NOT NULL,
-	GroupZipCode DECIMAL(10) NOT NULL,
-	GroupPhoneNumber VARCHAR(10) NOT NULL,
+	GroupZipCode VARCHAR(10) NOT NULL,
+	GroupPhoneNumber VARCHAR(10) NOT NULL
+	CHECK(LEN(GroupPhoneNumber) = 8 ),
 	GroupPage VARCHAR(50) NULL,
 	GroupEmail VARCHAR(50) NULL,
-	DateEntered DATETIME  NOT NULL );
+	DateEntered DATE  NOT NULL );
 
 CREATE TABLE Musical_Style(
 	StyleNameID VARCHAR(8) NOT NULL PRIMARY KEY,
@@ -84,14 +88,13 @@ CREATE TABLE Engagements(
 	EngagementNumber VARCHAR(8) NOT NULL PRIMARY KEY,
 	StartDate DATE  NOT NULL,
 	EndDate DATE NOT NULL,
-	StartTime TIME  NOT NULL,
-	StopTime TIME NOT NULL,
+	StartTime TIME(0)  NOT NULL,
+	StopTime TIME(0) NOT NULL,
 	ContractPrice MONEY  NOT NULL
 	CHECK (ContractPrice !< 0),
 	CustomerID VARCHAR (8) NULL,
 	AgentID VARCHAR (8) NULL,
 	GroupID VARCHAR (8) NULL,
-	
 	);
 
 
