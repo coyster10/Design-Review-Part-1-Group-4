@@ -44,7 +44,8 @@ CREATE TABLE Customers(
 	CustomerCity VARCHAR(50) NOT NULL,
 	CustomerState VARCHAR(2) NOT NULL,
 	CustomerZipCode VARCHAR(10) NOT NULL,
-	CustomerPhoneNumber VARCHAR(10) NOT NULL );
+	CustomerPhoneNumber VARCHAR(10) NOT NULL
+	CHECK(LEN(CustomerPhoneNumber) = 8 ));
 
 
 CREATE TABLE Groups(
