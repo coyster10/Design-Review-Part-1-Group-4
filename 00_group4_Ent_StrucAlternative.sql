@@ -9,85 +9,88 @@ USE Entertainment
 GO
 
 CREATE TABLE Agents(
-	AgentID NVARCHAR(8) NOT NULL PRIMARY KEY,
-	AgentFirstName NVARCHAR(50) NOT NULL,
-	AgentLastName NVARCHAR(50) NOT NULL,
-	AgentStreetAddress NVARCHAR(50) NOT NULL,
-	AgentCity NVARCHAR(50) NOT NULL,
-	AgentState NVARCHAR (2) NOT NULL,
+	AgentID VARCHAR(8) NOT NULL PRIMARY KEY,
+	AgentFirstName VARCHAR(50) NOT NULL,
+	AgentLastName VARCHAR(50) NOT NULL,
+	AgentStreetAddress VARCHAR(50) NOT NULL,
+	AgentCity VARCHAR(50) NOT NULL,
+	AgentState VARCHAR (2) NOT NULL,
 	AgentZipCode DECIMAL(10) NOT NULL,
-	AgentPhoneNumber NVARCHAR (10) NOT NULL,
+	AgentPhoneNumber VARCHAR (10) NOT NULL,
 	DateHired DATE ,
-	Salary MONEY NOT NULL,
-	CommissionRate DECIMAL (7,2) NOT NULL);
+	Salary MONEY NOT NULL
+	CHECK (Salary !< 0),
+	CommissionRate DECIMAL (5,2)
+	CHECK (CommissionRate !> 100 OR CommissionRate !< 0)NOT NULL);
 
 
 CREATE TABLE Performers(
-	MemberID NVARCHAR(8) NOT NULL PRIMARY KEY,
-	MemberFirstName NVARCHAR(50) NOT NULL, 
-	MemberLastName NVARCHAR(50) NOT NULL,
-	MemberPhoneNumber NVARCHAR(10) NOT NULL,
-	MemberGender NVARCHAR(1)
+	MemberID VARCHAR(8) NOT NULL PRIMARY KEY,
+	MemberFirstName VARCHAR(50) NOT NULL, 
+	MemberLastName VARCHAR(50) NOT NULL,
+	MemberPhoneNumber VARCHAR(10) NOT NULL,
+	MemberGender VARCHAR(1)
 	CHECK (MemberGender = 'M' OR MemberGender = 'F')NOT NULL );
 
 
 CREATE TABLE Customers(
-	CustomerID NVARCHAR(8) NOT NULL PRIMARY KEY,
-	CustomerFirstName NVARCHAR(50) NOT NULL,
-	CustomerLastName NVARCHAR(50) NOT NULL,
-	CustomerStreetAddress NVARCHAR(50) NOT NULL,
-	CustomerCity NVARCHAR(50) NOT NULL,
-	CustomerState NVARCHAR(2) NOT NULL,
+	CustomerID VARCHAR(8) NOT NULL PRIMARY KEY,
+	CustomerFirstName VARCHAR(50) NOT NULL,
+	CustomerLastName VARCHAR(50) NOT NULL,
+	CustomerStreetAddress VARCHAR(50) NOT NULL,
+	CustomerCity VARCHAR(50) NOT NULL,
+	CustomerState VARCHAR(2) NOT NULL,
 	CustomerZipCode DECIMAL(10) NOT NULL,
-	CustomerPhoneNumber NVARCHAR(10) NOT NULL );
+	CustomerPhoneNumber VARCHAR(10) NOT NULL );
 
 
 CREATE TABLE Groups(
-	GroupID NVARCHAR(8) NOT NULL PRIMARY KEY,
-	StageName NVARCHAR(50) NOT NULL,
-	SSN NVARCHAR(11) NOT NULL,
-	GroupStreetAddress NVARCHAR (50) NOT NULL,
-	GroupCity NVARCHAR(50) NOT NULL,
-	GroupState NVARCHAR(2) NOT NULL,
+	GroupID VARCHAR(8) NOT NULL PRIMARY KEY,
+	StageName VARCHAR(50) NOT NULL,
+	SSN VARCHAR(11) NOT NULL,
+	GroupStreetAddress VARCHAR (50) NOT NULL,
+	GroupCity VARCHAR(50) NOT NULL,
+	GroupState VARCHAR(2) NOT NULL,
 	GroupZipCode DECIMAL(10) NOT NULL,
-	GroupPhoneNumber NVARCHAR(10) NOT NULL,
-	GroupPage NVARCHAR(50) NULL,
-	GroupEmail NVARCHAR(50) NULL,
+	GroupPhoneNumber VARCHAR(10) NOT NULL,
+	GroupPage VARCHAR(50) NULL,
+	GroupEmail VARCHAR(50) NULL,
 	DateEntered DATETIME  NOT NULL );
 
 CREATE TABLE Musical_Style(
-	StyleNameID NVARCHAR(8) NOT NULL PRIMARY KEY,
-	StyleName NVARCHAR(50) NOT NULL );
+	StyleNameID VARCHAR(8) NOT NULL PRIMARY KEY,
+	StyleName VARCHAR(50) NOT NULL );
 	
 CREATE TABLE Group_Members(
-	GroupID NVARCHAR(8) NULL ,
-	MemberID NVARCHAR(8) NULL,
+	GroupID VARCHAR(8) NULL ,
+	MemberID VARCHAR(8) NULL,
 	Status DECIMAL(1) 
 	CHECK (Status = 1 OR Status = 2 ) NOT NULL );
 
 CREATE TABLE Group_By_Style(
-	StyleNameID NVARCHAR(8) NULL ,
-	GroupID NVARCHAR(8) NULL ,
+	StyleNameID VARCHAR(8) NULL ,
+	GroupID VARCHAR(8) NULL ,
 	StyleStrength DECIMAL(1)
 	CHECK (StyleStrength = 1 OR StyleStrength  <= 3 ) NOT NULL );
 
 CREATE TABLE Musical_Preferences(
-	StyleNameID NVARCHAR(8) NULL ,
-	CustomerID NVARCHAR(8) NULL ,
+	StyleNameID VARCHAR(8) NULL ,
+	CustomerID VARCHAR(8) NULL ,
 	PreferenceRating DECIMAL(1)
 	 CHECK (PreferenceRating = 1 OR PreferenceRating <= 3 ) NOT NULL );
 
 
 CREATE TABLE Engagements(
-	EngagementNumber DECIMAL(8) NOT NULL PRIMARY KEY,
+	EngagementNumber VARCHAR(8) NOT NULL PRIMARY KEY,
 	StartDate DATE  NOT NULL,
 	EndDate DATE NOT NULL,
 	StartTime TIME  NOT NULL,
 	StopTime TIME NOT NULL,
-	ContractPrice MONEY  NOT NULL,
-	CustomerID NVARCHAR (8) NULL,
-	AgentID NVARCHAR (8) NULL,
-	GroupID NVARCHAR (8) NULL,
+	ContractPrice MONEY  NOT NULL
+	CHECK (ContractPrice !< 0),
+	CustomerID VARCHAR (8) NULL,
+	AgentID VARCHAR (8) NULL,
+	GroupID VARCHAR (8) NULL,
 	
 	);
 
