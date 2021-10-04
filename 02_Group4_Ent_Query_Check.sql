@@ -1,5 +1,3 @@
-
-/* this is a comment*/
 --1. Create an agent phone list
 SELECT AgentFirstName+ AgentLastName AS AgentName, AgentPhoneNumber FROM Agents ORDER BY AgentName ASC;
 
